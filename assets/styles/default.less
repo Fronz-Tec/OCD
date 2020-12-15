@@ -11,11 +11,12 @@
 
 
 body{
-  background-color: @dark;
+  background-color: @dark !important;
   color: @light;
 }
 
 .formContainer{
+
   margin: 0 auto;
   text-align: center;
   align-content: center;
@@ -25,9 +26,10 @@ body{
   }
 
   label{
-    min-width: 500px;
-    margin: 30px;
+    text-align: right;
   }
+
+
 }
 
 .logTitle{
@@ -38,8 +40,7 @@ body{
 }
 
 .ocdTitle{
-  color: greenyellow;
+  color: @green;
   transform-origin: 0 0;
   transform: rotate(90deg);
-
 }

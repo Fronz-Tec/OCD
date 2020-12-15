@@ -7,5 +7,9 @@
 </aside>
 
 <main>
-    <h1>AAAAAAAAAAAAAAAAAAAAAAAAAAAA</h1>
+    <?php
+        if($_GET["site"] == "login"){
+            include("usermanagement/login.php");
+        }
+    ?>
 </main>
