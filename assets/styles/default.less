@@ -1,7 +1,8 @@
 /*Fonts*/
 @RIG: rig-shaded-medium-extrude, sans-serif;
 /*Colours*/
-@light: #CECCCD;
+@light: #f8f8f8;
+@not-as-light: #CECCCD;
 @slightly-light: #595957;
 @green: #7AD12E;
 @dark: #191919;
@@ -12,7 +13,7 @@
 
 body{
   background-color: @dark !important;
-  color: @light;
+  color: @not-as-light;
 }
 
 .formContainer{
@@ -43,4 +44,20 @@ body{
   color: @green;
   transform-origin: 0 0;
   transform: rotate(90deg);
+}
+
+
+
+
+
+
+.textInput{
+  width: 100%;
+  //padding: 12px 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 1px solid @black;
+  outline: none;
+  background-color: @light;
+  resize: none;
 }

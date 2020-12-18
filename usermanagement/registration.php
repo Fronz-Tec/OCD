@@ -16,7 +16,7 @@ include "templates/head.php"
         <h1 class="logTitle"><span class="ocdTitle">OCD</span> Registration</h1>
 
         <div class="formContainer">
-            <form method="post" action="#">
+            <form method="post" action="source/controller/db_controller.php">
 
                 <div class="row">
 
@@ -27,7 +27,7 @@ include "templates/head.php"
                     </div>
 
                     <div class="col">
-                        <input type="text" id="username" required><br>
+                        <input type="text" id="username" name="username" required><br>
                     </div>
 
                     <div class="col"></div>
@@ -42,7 +42,7 @@ include "templates/head.php"
                     </div>
 
                     <div class="col">
-                        <input type="email" id="email" required><br>
+                        <input type="email" id="email" name="email" required><br>
                     </div>
 
                     <div class="col"></div>
@@ -57,26 +57,26 @@ include "templates/head.php"
                     </div>
 
                     <div class="col">
-                        <input type="password" id="password" required><br>
+                        <input type="password" id="password" name="password" required><br>
                     </div>
 
                     <div class="col"></div>
                 </div>
 
-                <div class="row">
-
-                    <div class="col"></div>
-
-                    <div class="col">
-                        <label for="password-confirm">Confirm Password: </label>
-                    </div>
-
-                    <div class="col">
-                        <input type="password" id="password-confirm" required><br>
-                    </div>
-
-                    <div class="col"></div>
-                </div>
+<!--                <div class="row">-->
+<!---->
+<!--                    <div class="col"></div>-->
+<!---->
+<!--                    <div class="col">-->
+<!--                        <label for="password-confirm">Confirm Password: </label>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="col">-->
+<!--                        <input type="password" id="password-confirm" required><br>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="col"></div>-->
+<!--                </div>-->
 
                 <button type="submit">
                     Register

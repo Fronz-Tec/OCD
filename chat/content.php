@@ -38,7 +38,7 @@
 </div>
 <div class="chatBoxContainer">
     <form action="#">
-        <textarea cols="10" id="messageText"></textarea>
+        <textarea class="textInput" id="messageText"></textarea>
         <button type="submit">Send</button>
     </form>
 

@@ -1,8 +1,8 @@
 <head>
     <title>Obvita Chat Deluxe</title>
 <!--    --><?php //if($currentPage == "index"){?>
-<!--        <meta name="description" content="This is an chat application for obvita">-->
-<!--        <meta name="keywords" content="chat, communication, social, media, writting">-->
+        <meta name="description" content="This is an chat application for obvita">
+        <meta name="keywords" content="chat, communication, social, media, writting">
 <!--    --><?php //} ?>
 
     <!--Fonts-->
@@ -23,7 +23,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-    
     <!--Own Style-->
     <link rel="stylesheet/less" type="text/css" href="assets/styles/default.less">
 

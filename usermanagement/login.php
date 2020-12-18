@@ -1,12 +1,12 @@
 <h1 class="logTitle"><span class="ocdTitle">OCD</span> Registration</h1>
 
 <div class="formContainer">
-        <form>
+        <form action="source/controller/db_controller.php" method="post">
             <label for="username">Username: </label>
-            <input type="text" id="username"><br>
+            <input type="text" id="username" name="username"><br>
 
             <label for="password">Password: </label>
-            <input type="password" id="password"><br>
+            <input type="password" id="password" name="password"><br>
 
             <button type="submit">Login</button>
 
