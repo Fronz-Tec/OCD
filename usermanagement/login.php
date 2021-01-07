@@ -1,4 +1,4 @@
-<h1 class="logTitle"><span class="ocdTitle">OCD</span> Registration</h1>
+<h1 class="logTitle"><span class="ocdTitle">OCD</span> Login</h1>
 
 <div class="formContainer">
         <form action="source/controller/db_controller.php" method="post">
@@ -10,6 +10,6 @@
 
             <button type="submit">Login</button>
 
-            <p><a href="registration.php">Register</a> or <a href="#">Forgot Password</a></p>
+            <p><a href="?site=register">Register</a> or <a href="#">Forgot Password</a></p>
         </form>
     </div>

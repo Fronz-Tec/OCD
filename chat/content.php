@@ -35,10 +35,19 @@
 
 
     ?>
+
+    <ul>
+        <?php
+        include "source/controller/db_controller.php";
+        $chatters = getAllMessages();
+        $value = mysqli_fetch_array($chatters)["username"];
+        ?>
+    </ul>
+
 </div>
 <div class="chatBoxContainer">
-    <form action="#">
-        <textarea class="textInput" id="messageText"></textarea>
+    <form action="source/controller/db_controller.php" method="post">
+        <textarea class="textInput" id="newMessage" name="newMessage"></textarea>
         <button type="submit">Send</button>
     </form>
 

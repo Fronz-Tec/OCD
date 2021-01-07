@@ -1,11 +1,17 @@
 <?php
-
+if(isset($_SESSION["username"])){
+?>
+<aside>
+    <?php
+        include "templates/aside.php"
+    ?>
+</aside>
+<?php
+}
 ?>
 
 
-<aside>
 
-</aside>
 
 <main>
     <?php
@@ -16,7 +22,7 @@
             }
         }else{
             if($_GET["site"] == "register"){
-                include("usermanagement/register.php");
+                include("usermanagement/registration.php");
             }elseif($_GET["site"] == "login"){
                 include("usermanagement/login.php");
             } else{
