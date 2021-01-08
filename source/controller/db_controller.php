@@ -2,20 +2,17 @@
 
 $connection = null;
 
-if(isset($_POST["username"])&& isset($_POST["password"])) {
-
+if (isset($_POST["username"]) && isset($_POST["password"])) {
     verifyUser($_POST["username"], $_POST["password"]);
-}elseif (isset($_POST["username_reg"])&& isset($_POST["password_reg"]) && isset($_POST["email_reg"])) {
-
-    registerUser($_POST["username_reg"], $_POST["password_reg"],$_POST["email_reg"]);
-}elseif (isset($_POST["allChatter"])) {
+} elseif (isset($_POST["username_reg"]) && isset($_POST["password_reg"]) && isset($_POST["email_reg"])) {
+    registerUser($_POST["username_reg"], $_POST["password_reg"], $_POST["email_reg"]);
+} elseif (isset($_POST["allChatter"])) {
     getAllChatters();
-}elseif (isset($_POST["newMessage"])){
+} elseif (isset($_POST["newMessage"])) {
     sendMessage($_POST["newMessage"]);
-}elseif (isset($_POST["currentChatter"])) {
+} elseif (isset($_POST["currentChatter"])) {
     getMessage($_POST["currentChatter"]);
-}else{
-
+}else {
     logout();
 }
 
@@ -189,15 +186,25 @@ function getMessage($user){
     error_log($user);
     header('location: http://localhost/OCD?site=chat');
 
+    $sender_id_query = "SELECT idUser FROM user WHERE username = '".$user."'";
+    $result = mysqli_query(getDBConnection(),$sender_id_query);
+    $sender_id = mysqli_fetch_array($result)["idUser"];
+
+    error_log("SELECT * FROM reciever WHERE user_fsid ='".$sender_id."'");
+    $statement = "SELECT * FROM reciever WHERE user_fsid ='".$user."'";
+    $result = mysqli_query(getDBConnection(),$statement);
+
+    error_log("SELECT * FROM messages WHERE idmessages ='".$."'");
+    $statement = "SELECT * FROM reciever WHERE user_fsid ='".$user."'";
+    $result = mysqli_query(getDBConnection(),$statement);
+
+    return $result;
 }
 
 function setRole($user, $role){
 
 }
 
-function getAllMessages($user){
-    $statement = "SELECT * FROM messages";
-}
 
 function getAllChatters(){
 

@@ -39,8 +39,13 @@
     <ul>
         <?php
         include "source/controller/db_controller.php";
-        $chatters = getAllMessages();
-        $value = mysqli_fetch_array($chatters)["username"];
+        $messages = getAllMessages();
+        $value = mysqli_fetch_array($messages)["message"];
+
+
+        foreach ($messages as $message){
+            echo "<span></span>";
+        }
         ?>
     </ul>
 

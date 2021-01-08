@@ -48,21 +48,6 @@
             <div class="col"></div>
         </div>
 
-        <!--                <div class="row">-->
-        <!---->
-        <!--                    <div class="col"></div>-->
-        <!---->
-        <!--                    <div class="col">-->
-        <!--                        <label for="password-confirm">Confirm Password: </label>-->
-        <!--                    </div>-->
-        <!---->
-        <!--                    <div class="col">-->
-        <!--                        <input type="password" id="password-confirm" required><br>-->
-        <!--                    </div>-->
-        <!---->
-        <!--                    <div class="col"></div>-->
-        <!--                </div>-->
-
         <button type="submit">
             Register
         </button>
