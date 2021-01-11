@@ -192,13 +192,19 @@ function getMessage($user){
 
     error_log("SELECT * FROM reciever WHERE user_fsid ='".$sender_id."'");
     $statement = "SELECT * FROM reciever WHERE user_fsid ='".$user."'";
-    $result = mysqli_query(getDBConnection(),$statement);
+    $message = mysqli_query(getDBConnection(),$statement)["message_reciever"];
 
-    error_log("SELECT * FROM messages WHERE idmessages ='".$."'");
-    $statement = "SELECT * FROM reciever WHERE user_fsid ='".$user."'";
-    $result = mysqli_query(getDBConnection(),$statement);
+    $messages = mysqli_fetch_array($message)["message_reciever"];
 
-    return $result;
+    foreach ($messages as $currentMessage){
+        error_log("SELECT * FROM messages WHERE idmessages ='".$currentMessage."'");
+        $statement = "SELECT * FROM messages WHERE idmessages ='".$currentMessage."'";
+        $result = mysqli_query(getDBConnection(),$statement);
+
+
+        return $result;
+    }
+
 }
 
 function setRole($user, $role){

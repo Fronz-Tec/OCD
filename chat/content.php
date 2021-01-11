@@ -40,9 +40,9 @@
         <?php
         include "source/controller/db_controller.php";
         $messages = getAllMessages();
-        $value = mysqli_fetch_array($messages)["message"];
-
-
+        $value = mysqli_fetch_array($messages)["username"];
+        
+        
         foreach ($messages as $message){
             echo "<span></span>";
         }
