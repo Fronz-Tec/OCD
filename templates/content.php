@@ -1,12 +1,16 @@
 <?php
 if(isset($_SESSION["username"])){
+    if($_GET["site"] == "chat") {
 ?>
 <aside>
     <?php
-        include "templates/aside.php"
+
+        include "templates/aside.php";
+
     ?>
 </aside>
 <?php
+    }
 }
 ?>
 

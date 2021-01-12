@@ -10,6 +10,8 @@
 
 @title1: 75px;
 
+@full: 100%;
+
 aside{
   float: left;
    background-color: green;
@@ -29,10 +31,17 @@ footer{
   float: none;
 }
 
-main{
-  float: right;
-  width: 75%;
+label{
+  width: 200px;
+  color: @green;
+  text-align: right;
+
 }
+
+main{
+  width: @full;
+}
+
 
 .formContainer{
 
@@ -43,11 +52,16 @@ main{
   overflow-x: hidden;
 
   input{
-
+    background: @not-as-light;
   }
 
   label{
     text-align: right;
+  }
+
+  main{
+    width: 100% !important;
+    clear: both;
   }
 
 
