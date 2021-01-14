@@ -12,30 +12,94 @@
 
 @full: 100%;
 
-aside{
-  float: left;
-   background-color: green;
-  width: 25%;
+a{
+  color: @green;
 }
 
+a:hover{
+  color: @not-as-light;
+}
+
+aside{
+  float: left;
+  background-color: @dark;
+  width: 15%;
+  height: @full;
+  min-height: @full;
+  height: 90vh;
+  word-wrap: normal;
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
+  overflow:auto;
+  border-right: 2px solid @slightly-light;
+
+
+  .link-button {
+    background: none;
+    border: none;
+    color: #f8f8f8;
+    //text-decoration: underline;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: serif;
+    text-decoration: none;
+  }
+  .link-button:focus {
+    outline: none;
+  }
+  .link-button:active {
+    color: @not-as-light;
+  }
+
+}
+
+
+
+button{
+  width: 100px;
+  background-color: @dark;
+  color: @green;
+  border: 1px solid @slightly-light;
+}
+
+button:scope{
+  background-color: @slightly-light;
+}
 
 body{
   background-color: @dark !important;
   color: @not-as-light;
-  max-width: 100%;
+  max-width: @full;
   overflow-x: hidden;
 }
+
+
+
 
 footer{
   clear: both;
   float: none;
+  color: @green;
+}
+
+input{
+  width: 300px;
+  max-width: 300PX;
+  background-color: @dark;
+  border: 1px solid @slightly-light;
+  color: @green;
+}
+
+input:focus{
+  background-color: @not-as-light;
+  border: 1px solid @green;
+  color: @black;
 }
 
 label{
-  width: 200px;
+  width: 100px;
   color: @green;
   text-align: right;
-
 }
 
 main{
@@ -43,16 +107,38 @@ main{
 }
 
 
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: @dark;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: @slightly-light;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: @not-as-light;
+}
+
+
+
 .formContainer{
 
   margin: 0 auto;
   text-align: center;
   align-content: center;
-  max-width: 100%;
+  max-width: @full;
   overflow-x: hidden;
 
   input{
-    background: @not-as-light;
+
   }
 
   label{
@@ -60,27 +146,11 @@ main{
   }
 
   main{
-    width: 100% !important;
+    width: @full !important;
     clear: both;
   }
 
 
-}
-
-.link-button {
-  background: none;
-  border: none;
-  color: #f8f8f8;
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: 1em;
-  font-family: serif;
-}
-.link-button:focus {
-  outline: none;
-}
-.link-button:active {
-  color:red;
 }
 
 
@@ -102,7 +172,7 @@ main{
 
 
 .textInput{
-  width: 100%;
+  width: @full;
   //padding: 12px 20px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -112,16 +182,30 @@ main{
   resize: none;
 }
 
+.chatContainer{
+  width: 85%;
+  max-width: 85%;
+  height: 80vh;
+  max-height: 80vh;
+  float: right;
+  word-wrap: normal;
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
+  overflow:auto;
+
+
+}
 
 .chatBoxContainer{
-  max-width: 75%;
+  max-width: @full;
   width: 75%;
-  background-color: aliceblue;
-
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin: 0 auto;
+  bottom: 0;
+  left: 14.9%;
 
 }
 
-.textInput{
-  width: 300px;
-  max-width: 300PX;
-}

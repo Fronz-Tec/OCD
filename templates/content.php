@@ -5,7 +5,7 @@ if(isset($_SESSION["username"])){
 <aside>
     <?php
 
-        include "templates/aside.php";
+    include_once "templates/aside.php";
 
     ?>
 </aside>
@@ -19,16 +19,21 @@ if(isset($_SESSION["username"])){
 
 <main>
     <?php
-
+//TODO Kevin
+//        if (!dbController.isUserChatter()) {
+//            //forward to user is in verification site
+//        } else
         if(isset($_SESSION["username"])){
             if ($_GET["site"] == "chat"){
-                include("chat/content.php");
+                include_once("chat/content.php");
+            }elseif ($_GET["site"] == "admin"){
+                include_once("admin/users.php");
             }
         }else{
             if($_GET["site"] == "register"){
-                include("usermanagement/registration.php");
+                include_once("usermanagement/registration.php");
             }elseif($_GET["site"] == "login"){
-                include("usermanagement/login.php");
+                include_once("usermanagement/login.php");
             } else{
                 header('location: http://localhost/OCD?site=login');
             }

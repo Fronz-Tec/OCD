@@ -3,50 +3,14 @@
 <div class="formContainer">
     <form method="post" action="source/controller/db_controller.php">
 
-        <div class="row">
+        <label for="username">Username: </label>
+        <input type="text" id="username_reg" name="username_reg" required><br>
 
-            <div class="col"></div>
+        <label for="email">Email: </label>
+        <input type="email" id="email_reg" name="email_reg" required><br>
 
-            <div class="col">
-                <label for="username">Username: </label>
-            </div>
-
-            <div class="col">
-                <input type="text" id="username_reg" name="username_reg" required><br>
-            </div>
-
-            <div class="col"></div>
-        </div>
-
-        <div class="row">
-
-            <div class="col"></div>
-
-            <div class="col">
-                <label for="email">Email: </label>
-            </div>
-
-            <div class="col">
-                <input type="email" id="email_reg" name="email_reg" required><br>
-            </div>
-
-            <div class="col"></div>
-        </div>
-
-        <div class="row">
-
-            <div class="col"></div>
-
-            <div class="col">
-                <label for="password">Password: </label>
-            </div>
-
-            <div class="col">
-                <input type="password" id="password_reg" name="password_reg" required><br>
-            </div>
-
-            <div class="col"></div>
-        </div>
+        <label for="password">Password: </label>
+        <input type="password" id="password_reg" name="password_reg" required><br>
 
         <button type="submit">
             Register

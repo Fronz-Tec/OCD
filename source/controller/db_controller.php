@@ -11,9 +11,25 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 } elseif (isset($_POST["newMessage"])) {
     sendMessage($_POST["newMessage"]);
 } elseif (isset($_POST["currentChatter"])) {
-    getMessage($_POST["currentChatter"]);
-}else {
+//    getMessages($_POST["currentChatter"]);
+
+    session_start();
+    $_SESSION["currentChatter"] = $_POST["currentChatter"];
+    error_log($_SESSION["currentChatter"]);
+    header('location: http://localhost/OCD?site=chat');
+}elseif(isset($_POST["logout"])) {
     logout();
+}elseif (isset($_POST["user"]) && isset($_POST["role"])){
+    error_log("UPDATE user SET roles_idroles = ".$_POST["role"]." WHERE username = '".$_POST["user"]."'");
+    $user_role_query = "UPDATE user SET roles_idroles = ".$_POST["role"]." WHERE username = '".$_POST["user"]."'";
+    $resultuserrole = mysqli_query(getDBConnection(),$user_role_query);
+
+    header('location: http://localhost/OCD?site=admin');
+
+}
+else {
+
+
 }
 
 function dbConnect(){
@@ -52,7 +68,19 @@ function getUser(){
 }
 
 function getAllUsers(){
+    $users_query = "SELECT * FROM user";
+    $result = mysqli_query(getDBConnection(),$users_query);
 
+    $userlist = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        $user_role_query = "SELECT name FROM roles WHERE idroles = '".$row["roles_idroles"]."'";
+        $resultuserrole = mysqli_query(getDBConnection(),$user_role_query);
+        $userrolename = mysqli_fetch_array($resultuserrole)["name"];
+
+        $userItem = array($row["username"], $userrolename);
+        array_push($userlist, $userItem);
+    }
+    return $userlist;
 }
 
 function registerUser($username, $password, $email){
@@ -150,6 +178,7 @@ function sendMessage($message){
     session_start();
     $sender = $_SESSION["username"];
     $empfanger = $_SESSION["currentChatter"];
+    error_log($empfanger);
 
     mysqli_query(getDBConnection(), "START TRANSACTION;");
 
@@ -162,6 +191,7 @@ function sendMessage($message){
     $statement = "INSERT INTO messages (sender, text) VALUES ('".$sender_id."','".$message."')";
 
     //message id
+
     $result = mysqli_query(getDBConnection(),$statement);
     $idmessages = mysqli_insert_id(getDBConnection());
 
@@ -173,38 +203,47 @@ function sendMessage($message){
     //insert reveiver 1-n
     $statement = "INSERT INTO reciever (user_fsid, message_reciever) VALUES (".$reveiver_id.",".$idmessages.")";
     $result = mysqli_query(getDBConnection(),$statement);
+    $statement = "INSERT INTO reciever (user_fsid, message_reciever) VALUES (".$sender_id.",".$idmessages.")";
+    $result = mysqli_query(getDBConnection(),$statement);
 
     mysqli_query(getDBConnection(), "COMMIT;");
 //    error_log($statement);
 
+    session_abort();
     header('location: http://localhost/OCD?site=chat');
 }
 
-function getMessage($user){
-    session_start();
-    $_SESSION["currentChatter"] = $user;
-    error_log($user);
-    header('location: http://localhost/OCD?site=chat');
+function getMessages(){
 
-    $sender_id_query = "SELECT idUser FROM user WHERE username = '".$user."'";
-    $result = mysqli_query(getDBConnection(),$sender_id_query);
-    $sender_id = mysqli_fetch_array($result)["idUser"];
+    $messageList = array();
+    if (isset($_SESSION["currentChatter"])) {
 
-    error_log("SELECT * FROM reciever WHERE user_fsid ='".$sender_id."'");
-    $statement = "SELECT * FROM reciever WHERE user_fsid ='".$user."'";
-    $message = mysqli_query(getDBConnection(),$statement)["message_reciever"];
+        $user = $_SESSION["currentChatter"];
+        error_log($user);
 
-    $messages = mysqli_fetch_array($message)["message_reciever"];
 
-    foreach ($messages as $currentMessage){
-        error_log("SELECT * FROM messages WHERE idmessages ='".$currentMessage."'");
-        $statement = "SELECT * FROM messages WHERE idmessages ='".$currentMessage."'";
+        $sender_id_query = "SELECT idUser FROM user WHERE username = '".$user."'";
+        $result = mysqli_query(getDBConnection(),$sender_id_query);
+        $sender_id = mysqli_fetch_array($result)["idUser"];
+
+        $statement = "SELECT * FROM reciever WHERE user_fsid ='".$sender_id."'";
         $result = mysqli_query(getDBConnection(),$statement);
 
+        while ($row = mysqli_fetch_assoc($result)){
+            $statement = "SELECT * FROM messages WHERE idmessages ='".$row["message_reciever"]."'";
+            $resultMessage = mysqli_query(getDBConnection(),$statement);
+            $messageRow = mysqli_fetch_array($resultMessage);
 
-        return $result;
+            $sender_name_query = "SELECT username FROM user WHERE idUser = '".$messageRow["sender"]."'";
+            $resultSenderUsername = mysqli_query(getDBConnection(),$sender_name_query);
+            $sender_username = mysqli_fetch_array($resultSenderUsername)["username"];
+
+            $messageElement = array($sender_username,$messageRow["text"]);
+            array_push($messageList,$messageElement);
+        }
+
     }
-
+    return $messageList;
 }
 
 function setRole($user, $role){
