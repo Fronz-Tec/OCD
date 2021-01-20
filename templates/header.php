@@ -1,5 +1,6 @@
 <header>
     <?php
+    include_once "source/controller/db_controller.php";
 
     session_start();
 
@@ -14,6 +15,12 @@
     <?php
     }
 
+    if(isAdmin()){
+        ?>
+
+        <a  href="http://localhost/OCD?site=admin"><button>Admin Panel</button></a>
+    <?php
+    }
 
     ?>
 

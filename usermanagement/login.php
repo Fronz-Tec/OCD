@@ -10,6 +10,6 @@
 
             <button type="submit">Login</button>
 
-            <p><a href="?site=register">Register</a> or <a href="#">Forgot Password</a></p>
+            <p><a href="?site=register">Register</a> or <a href="?site=reset">Forgot Password</a></p>
         </form>
     </div>

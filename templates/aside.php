@@ -5,21 +5,32 @@
 
     include_once "source/controller/db_controller.php";
     $chatters = getAllChatters();
-    $value = mysqli_fetch_array($chatters)["username"];
+//    $value = mysqli_fetch_array($chatters)["username"];
 
+    if($chatters !== null) {
 
-    foreach ($chatters as $chatter){
+        echo "<form method='post' action='source/controller/db_controller.php'>
+                      <input type='hidden' id='currentChatter' name='currentChatter' value='all'>
+                      <button type='submit' class='link-button'>
+                          General Chat
+                     </button>
+                    </form>";
 
-//        if($chatter["username"] != $_SESSION["currentChatter"]) {
-            if($chatter["username"] != $_SESSION["username"]) {
+        foreach ($chatters as $chatter) {
+
+    //        if($chatter["username"] != $_SESSION["currentChatter"]) {
+            if ($chatter != $_SESSION["username"]) {
                 echo "<form method='post' action='source/controller/db_controller.php'>
-                  <input type='hidden' id='currentChatter' name='currentChatter' value='" . $chatter["username"] . "'>
-                  <button type='submit' class='link-button'>
-                      " . $chatter["username"] . "
-                 </button>
-                </form>";
+                      <input type='hidden' id='currentChatter' name='currentChatter' value='" . $chatter. "'>
+                      <button type='submit' class='link-button'>
+                          " . $chatter. "
+                     </button>
+                    </form>";
             }
-//        }
+    //        }
+        }
+    }else{
+        echo "<p>No Access Rights</p>";
     }
     ?>
 </ul>
